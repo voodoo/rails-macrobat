@@ -1,0 +1,31 @@
+%h1 Listing meals
+
+%table.table
+  %thead
+    %tr
+      %th User
+      %th Carbs
+      %th Fats
+      %th Prots
+      %th Calories
+      %th Fiber
+      %th
+      %th
+      %th
+
+  %tbody
+    - @meals.each do |meal|
+      %tr
+        %td= meal.user
+        %td= meal.carbs
+        %td= meal.fats
+        %td= meal.prots
+        %td= meal.calories
+        %td= meal.fiber
+        %td= link_to 'Show', meal
+        %td= link_to 'Edit', edit_meal_path(meal)
+        %td= link_to 'Destroy', meal, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Meal', new_meal_path

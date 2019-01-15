@@ -1,0 +1,17 @@
+= bootstrap_form_with model: @meal, local: true, layout: :horizontal do |f|
+  - if @meal.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@meal.errors.count, "error")} prohibited this meal from being saved:"
+      %ul
+        - @meal.errors.full_messages.each do |message|
+          %li= message
+
+  = f.text_field :user_id
+  = f.file_field :pic, label: "Meal Picture"
+  = f.text_field :carbs
+  = f.text_field :fats
+  = f.text_field :prots
+  = f.text_field :calories
+  = f.text_field :fiber
+  .actions
+    = f.submit 'Save'

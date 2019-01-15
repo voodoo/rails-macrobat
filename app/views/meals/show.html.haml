@@ -1,0 +1,28 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @meal.user.name
+%p
+  %b Pic:
+  - if @meal.pic.attached?
+    = image_tag @meal.pic, class: "img-fluid rounded-circle"
+%p
+  %b Carbs:
+  = @meal.carbs
+%p
+  %b Fats:
+  = @meal.fats
+%p
+  %b Prots:
+  = @meal.prots
+%p
+  %b Calories:
+  = @meal.calories
+%p
+  %b Fiber:
+  = @meal.fiber
+
+= link_to 'Edit', edit_meal_path(@meal)
+\|
+= link_to 'Back', meals_path

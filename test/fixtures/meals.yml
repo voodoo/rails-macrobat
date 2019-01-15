@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  carbs: MyString
+  fats: MyString
+  prots: MyString
+  calories: MyString
+  fiber: MyString
+
+two:
+  user: two
+  carbs: MyString
+  fats: MyString
+  prots: MyString
+  calories: MyString
+  fiber: MyString
