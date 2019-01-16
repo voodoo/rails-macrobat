@@ -20,6 +20,8 @@ gem 'haml-rails'
 # gem 'bootstrap-sass', '~> 3.4.0'
 # gem 'sassc-rails', '>= 2.0.0'
 gem "bootstrap_form"
+gem "aws-sdk-s3", require: false
+gem 'mini_magick'
 
 
 # Use CoffeeScript for .coffee assets and views
