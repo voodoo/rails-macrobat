@@ -1,0 +1,29 @@
+
+%h3 
+  Glucose readings
+  = link_to 'New Glucose', new_glucose_path, class: 'btn btn-success float-right'
+
+%table.table
+  %thead
+    %tr
+      %th User
+      %th Reading
+      %th Date/Time
+      %th
+
+  %tbody
+    - @glucoses.each do |glucose|
+      %tr
+        %td= link_to glucose.user.name, glucose.user
+        %td= glucose.reading
+        %td{title:glucose.updated_at.to_s(:long)}
+          = time_ago_in_words glucose.updated_at
+          ago
+        /%td= link_to 'Show', glucose
+        %td(style="text-align:right")
+          .btn-group
+            = link_to 'Edit', edit_glucose_path(glucose), class: 'btn btn-primary'
+            = link_to 'Destroy', glucose, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
+
+
+

@@ -1,28 +1,76 @@
 %p#notice= notice
 
-%p
-  %b User:
-  = @meal.user.name
-%p
-  %b Pic:
-  - if @meal.pic.attached?
-    = image_tag @meal.pic, class: "img-fluid rounded-circle"
-%p
-  %b Carbs:
-  = @meal.carbs
-%p
-  %b Fats:
-  = @meal.fats
-%p
-  %b Prots:
-  = @meal.prots
-%p
-  %b Calories:
-  = @meal.calories
-%p
-  %b Fiber:
-  = @meal.fiber
 
-= link_to 'Edit', edit_meal_path(@meal)
-\|
-= link_to 'Back', meals_path
+.card
+  %img.card-img-top{:alt => "...", :src => url_for(@meal.pic)}/
+  /https://getbootstrap.com/docs/4.2/components/card/
+  -# .card-body
+  -#   %h5.card-title Card title
+  -#   %p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
+  %ul.list-group.list-group-flush
+    %li.list-group-item 
+      %h4 
+        User
+        .float-right= @meal.user.name 
+      
+    %li.list-group-item.list-group-item-light
+      %h5 Macros  
+    %li.list-group-item 
+      Carbs
+      .badge.badge-primary.float-right= @meal.carbs.to_s  + '%'    
+    %li.list-group-item 
+      Fats
+      .badge.badge-primary.float-right= @meal.fats.to_s + '%'
+    %li.list-group-item 
+      Proteins
+      .badge.badge-primary.float-right= @meal.prots.to_s   + '%' 
+    %li.list-group-item.list-group-item-light
+      %h5 Calories       
+    %li.list-group-item 
+      Gross
+      .badge.badge-primary.float-right=@meal.calories
+    %li.list-group-item 
+      Net
+      .badge.badge-primary.float-right=@meal.calories
+    %li.list-group-item 
+      Weight
+      .badge.badge-primary.float-right= @meal.weight              
+    %li.list-group-item 
+      Fiber
+      .badge.badge-primary.float-right= @meal.fiber.to_s + '%'      
+
+
+
+  .card-body
+    = link_to 'Edit', edit_meal_path, class: 'card-link btn btn-primary'
+    //%a.card-link{:href => url_for(@meal)} Card link
+    / %a.card-link{:href => "#"} Another link
+
+
+
+-# %p
+-#   %b User:
+-#   = @meal.user.name
+-# %p
+-#   %b Pic:
+-#   - if @meal.pic.attached?
+-#     = image_tag @meal.pic, class: "img-fluid rounded-circle"
+-# %p
+-#   %b Carbs:
+-#   = @meal.carbs
+-# %p
+-#   %b Fats:
+-#   = @meal.fats
+-# %p
+-#   %b Prots:
+-#   = @meal.prots
+-# %p
+-#   %b Calories:
+-#   = @meal.calories
+-# %p
+-#   %b Fiber:
+-#   = @meal.fiber
+
+-# = link_to 'Edit', edit_meal_path(@meal)
+-# \|
+-# = link_to 'Back', meals_path

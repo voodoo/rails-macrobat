@@ -6,12 +6,14 @@
         - @meal.errors.full_messages.each do |message|
           %li= message
 
-  = f.text_field :user_id
+  = f.select :user_id, User.all.map{|u| [u.name, u.id]}
   = f.file_field :pic, label: "Meal Picture"
-  = f.text_field :carbs
-  = f.text_field :fats
-  = f.text_field :prots
-  = f.text_field :calories
-  = f.text_field :fiber
-  .actions
-    = f.submit 'Save'
+  = f.number_field :weight, help: 'In grams', required: true
+  %h5 Macros
+  = f.number_field :carbs, in: 1..100
+  = f.number_field :fats, in: 1..100
+  = f.number_field :prots,  in: 1..100, label: 'Proteins'
+  = f.number_field :fiber, in: 1..100
+  = f.number_field :calories
+  .actions.col-md-10.offset-md-2
+    = f.submit 'Save', class: 'btn btn-success'

@@ -1,0 +1,28 @@
+%h3 
+  Blood Presssures
+  = link_to 'New pressure', new_pressure_path, class: 'btn btn-success float-right'
+
+%table.table
+  %thead
+    %tr
+      %th User
+      %th Sys
+      %th Dias
+      %th Pulse
+      %th
+      %th
+      %th
+
+  %tbody
+    - @pressures.each do |pressure|
+      %tr
+        %td= link_to pressure.user.name, pressure
+        %td= pressure.sys
+        %td= pressure.dias
+        %td= pressure.pulse
+        %td= link_to 'Show', pressure
+        %td= link_to 'Edit', edit_pressure_path(pressure)
+        %td= link_to 'Destroy', pressure, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+

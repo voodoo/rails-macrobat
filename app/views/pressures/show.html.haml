@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @pressure.user
+%p
+  %b Sys:
+  = @pressure.sys
+%p
+  %b Dias:
+  = @pressure.dias
+%p
+  %b Pulse:
+  = @pressure.pulse
+
+= link_to 'Edit', edit_pressure_path(@pressure)
+\|
+= link_to 'Back', pressures_path

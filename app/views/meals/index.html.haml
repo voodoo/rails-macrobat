@@ -1,31 +1,32 @@
-%h1 Listing meals
+%h3 
+  Meals
+  = link_to 'New Meal', new_meal_path, class: 'btn btn-success float-right'
 
 %table.table
   %thead
     %tr
-      %th User
+      %th Image
+      %th Calories
       %th Carbs
       %th Fats
       %th Prots
-      %th Calories
       %th Fiber
+      %th User
       %th
       %th
       %th
-
   %tbody
     - @meals.each do |meal|
       %tr
-        %td= meal.user
+        /variant(resize_to_fit: [100, 100])
+        %td= image_tag meal.pic, width: '100px'
+        /%td= image_tag meal.pic.variant(resize_to_fit: [100, 100]) rescue "Error"
+        %td= meal.calories
         %td= meal.carbs
         %td= meal.fats
         %td= meal.prots
-        %td= meal.calories
         %td= meal.fiber
+        %td= link_to meal.user.name, meal.user
         %td= link_to 'Show', meal
         %td= link_to 'Edit', edit_meal_path(meal)
         %td= link_to 'Destroy', meal, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
-= link_to 'New Meal', new_meal_path

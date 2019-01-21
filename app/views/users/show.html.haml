@@ -1,12 +1,18 @@
 %p#notice= notice
 
-%p
-  %b Name:
-  = @user.name
-%p
-  %b Email:
-  = @user.email
+%h3 
+  = link_to @user.name, edit_user_path(@user)
+  .float-right User
 
-= link_to 'Edit', edit_user_path(@user)
-\|
-= link_to 'Back', users_path
+%hr
+- @meals = @user.meals
+= render template: 'meals/index'
+
+%hr
+- @glucoses = @user.glucoses
+= render template: 'glucoses/index'
+
+
+%hr
+- @pressures = @user.pressures
+= render template: 'pressures/index'

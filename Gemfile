@@ -22,6 +22,7 @@ gem 'haml-rails'
 gem "bootstrap_form"
 gem "aws-sdk-s3", require: false
 gem 'mini_magick'
+gem 'image_processing'#, '~> 1.2'
 
 
 # Use CoffeeScript for .coffee assets and views

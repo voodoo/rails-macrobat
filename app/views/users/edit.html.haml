@@ -1,7 +1,7 @@
-%h1 Editing user
+%h2.col-md-10.offset-md-2 Editing User
 
 = render 'form'
-
-= link_to 'Show', @user
-\|
-= link_to 'Back', users_path
+.float-right
+  .btn-group(style="margin-top:-60px")
+    = link_to 'Show', @user, class: 'btn btn-primary'
+    = link_to 'Back', users_path, class: 'btn btn-light'
