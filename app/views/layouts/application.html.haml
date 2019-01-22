@@ -7,15 +7,13 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'  
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    / Required meta tags
     %meta{:charset => "utf-8"}/
     %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}/
-    / Bootstrap CSS
     %link{:crossorigin => "anonymous", :href => "//stackpath.bootstrapcdn.com/bootswatch/4.2.1/flatly/bootstrap.min.css", :rel => "stylesheet"}/
-    /%link{:crossorigin => "anonymous", :href => "https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css", :integrity => "sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS", :rel => "stylesheet"}/
-  %body
     = render 'shared/nav.html.haml'
     .container-fluid(style="margin-top:20px")
+      - flash.each do |message_type, message|
+        %div{:class => "alert alert-#{message_type.to_s == 'notice' ? 'info' : 'danger'}"}= message 
       = yield
     %script{:src => "https://code.jquery.com/jquery-3.3.1.slim.min.js"}
     %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"}

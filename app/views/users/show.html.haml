@@ -1,8 +1,12 @@
-%p#notice= notice
-
 %h3 
-  = link_to @user.name, edit_user_path(@user)
-  .float-right User
+  - if current_user == @user
+    = link_to edit_user_path(@user) do
+      = octicon :person, width: 40
+      = @user.name
+  - else
+    = octicon :person, width: 40
+    = @user.name  
+
 
 %hr
 - @meals = @user.meals
@@ -11,6 +15,10 @@
 %hr
 - @glucoses = @user.glucoses
 = render template: 'glucoses/index'
+
+%hr
+- @ketos = @user.ketos
+= render template: 'ketos/index'
 
 
 %hr

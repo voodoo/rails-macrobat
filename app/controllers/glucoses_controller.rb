@@ -14,7 +14,7 @@ class GlucosesController < ApplicationController
 
   # GET /glucoses/new
   def new
-    @glucose = Glucose.new
+    @glucose = Glucose.new(reading: 80)
   end
 
   # GET /glucoses/1/edit
@@ -24,7 +24,7 @@ class GlucosesController < ApplicationController
   # POST /glucoses
   # POST /glucoses.json
   def create
-    @glucose = Glucose.new(glucose_params)
+    @glucose = current_user.glucoses.new(glucose_params)
 
     respond_to do |format|
       if @glucose.save
@@ -54,9 +54,10 @@ class GlucosesController < ApplicationController
   # DELETE /glucoses/1
   # DELETE /glucoses/1.json
   def destroy
+    user = @glucose.user
     @glucose.destroy
     respond_to do |format|
-      format.html { redirect_to glucoses_url, notice: 'Glucose was successfully destroyed.' }
+      format.html { redirect_to user_path(user), notice: 'Glucose was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

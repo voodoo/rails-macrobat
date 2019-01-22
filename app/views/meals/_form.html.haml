@@ -1,12 +1,7 @@
-= bootstrap_form_with model: @meal, local: true, layout: :horizontal do |f|
-  - if @meal.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@meal.errors.count, "error")} prohibited this meal from being saved:"
-      %ul
-        - @meal.errors.full_messages.each do |message|
-          %li= message
+= bootstrap_form_with model: [current_user, @meal], local: true, layout: :horizontal do |f|
+  = render 'shared/error_messages', object: f.object
 
-  = f.select :user_id, User.all.map{|u| [u.name, u.id]}
+  /= f.select :user_id, User.all.map{|u| [u.name, u.id]}
   = f.file_field :pic, label: "Meal Picture"
   = f.number_field :weight, help: 'In grams', required: true
   %h5 Macros
@@ -17,3 +12,5 @@
   = f.number_field :calories
   .actions.col-md-10.offset-md-2
     = f.submit 'Save', class: 'btn btn-success'
+    - unless @meal.new_record?
+      = link_to 'Destroy', @meal, method: :delete, data: { confirm: 'Are you sure?' }

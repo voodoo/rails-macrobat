@@ -14,7 +14,7 @@ class PressuresController < ApplicationController
 
   # GET /pressures/new
   def new
-    @pressure = Pressure.new
+    @pressure = Pressure.new(sys: 120, dias: 80, pulse: 80)
   end
 
   # GET /pressures/1/edit
@@ -24,7 +24,7 @@ class PressuresController < ApplicationController
   # POST /pressures
   # POST /pressures.json
   def create
-    @pressure = Pressure.new(pressure_params)
+    @pressure = current_user.pressures.new(pressure_params)
 
     respond_to do |format|
       if @pressure.save

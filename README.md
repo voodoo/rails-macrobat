@@ -1,24 +1,19 @@
-# README
+# TODO
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[x] Add Keto model
+[x] Add signup/login
+[x] Clean up / consolidate CRUD
+[x] Fix flash
+[x] Fix icons / font-awesome / octicons
 
-Things you may want to cover:
+[] Namespace models under user
+[x] Un-namespace user resource / enforce on server instead
 
-* Ruby version
 
-* System dependencies
+Next time
+[] Timeline for User home page
 
-* Configuration
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Macros
+[] Math calc calories
+[] Meal javascript/ui for Macros

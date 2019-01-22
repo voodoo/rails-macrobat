@@ -1,0 +1,22 @@
+%h3 
+  Ketos
+  - if current_user
+    = link_to 'New Keto', new_keto_path, class: 'btn btn-success float-right sized-button'
+
+%table.table
+  %thead
+    %tr
+      %th User
+      %th Reading
+      %th
+
+  %tbody
+    - @ketos.each do |keto|
+      %tr
+        %td= link_to keto.user.name, keto.user
+        %td= keto.reading
+        %td(style="text-align:right")
+          - if current_user == keto.user
+            = link_to 'Edit', edit_keto_path(keto)
+
+

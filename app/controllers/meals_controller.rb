@@ -24,11 +24,11 @@ class MealsController < ApplicationController
   # POST /meals
   # POST /meals.json
   def create
-    @meal = Meal.new(meal_params)
+    @meal = current_user.meals.new(meal_params)
 
     respond_to do |format|
       if @meal.save
-        format.html { redirect_to @meal, notice: 'Meal was successfully created.' }
+        format.html { redirect_to @meal.user, notice: 'Meal was successfully created.' }
         format.json { render :show, status: :created, location: @meal }
       else
         format.html { render :new }
@@ -54,9 +54,10 @@ class MealsController < ApplicationController
   # DELETE /meals/1
   # DELETE /meals/1.json
   def destroy
+    user = @meal.user
     @meal.destroy
     respond_to do |format|
-      format.html { redirect_to meals_url, notice: 'Meal was successfully destroyed.' }
+      format.html { redirect_to user, notice: 'Meal was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

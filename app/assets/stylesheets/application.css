@@ -16,3 +16,7 @@
 */
 
 h1,h2 {border-bottom: 1px solid #eee;}
+
+.octicon {
+    fill: currentColor;
+  }

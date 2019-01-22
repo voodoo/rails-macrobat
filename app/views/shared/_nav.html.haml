@@ -6,13 +6,21 @@
     %span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
     %ul.navbar-nav.mr-auto
-      %li.nav-item{class: current_page?(meals_path) && 'active'}
-        %a.nav-link{:href => "/meals"} Meal
-      %li.nav-item{class: current_page?(glucoses_path) && 'active'}
-        %a.nav-link{:href => "/glucoses"} Glucose     
-      %li.nav-item
-        /class: current_page?(meals_path) && 'active'}
-        %a.nav-link{:href => "/pressures"} Pressure                
-      %li.nav-item
-        %a.nav-link{:href => "/users"} User
+      - 'meals glucoses ketos pressures users'.split.each do |mi|
+        %li.nav-item{class: current_page?("/#{mi}") && 'active'}
+          %a.nav-link{:href => "/#{mi}"}= mi.capitalize
+      /%li.nav-item |
+    %ul.navbar-nav.ml-auto
+      - if current_user
+        %li.nav-item
+          = link_to logout_path, class: 'nav-link', title: 'Log in', method: :delete  do
+            = octicon "sign-out", width: '20px'
+          /= link_to "Log out", logout_path, class: 'nav-link'
+      - else
+        - unless current_page?(login_path)
+          %li.nav-item            
+            = link_to login_path, class: 'nav-link', title: 'Log in' do
+              = octicon "sign-in", width: '20px'
+              
+
 

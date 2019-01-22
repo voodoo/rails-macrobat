@@ -1,6 +1,7 @@
 %h3 
   Blood Presssures
-  = link_to 'New pressure', new_pressure_path, class: 'btn btn-success float-right'
+  - if current_user
+    = link_to 'New Pressure', new_pressure_path, class: 'btn btn-success float-right sized-button'
 
 %table.table
   %thead
@@ -10,8 +11,7 @@
       %th Dias
       %th Pulse
       %th
-      %th
-      %th
+
 
   %tbody
     - @pressures.each do |pressure|
@@ -20,9 +20,10 @@
         %td= pressure.sys
         %td= pressure.dias
         %td= pressure.pulse
-        %td= link_to 'Show', pressure
-        %td= link_to 'Edit', edit_pressure_path(pressure)
-        %td= link_to 'Destroy', pressure, method: :delete, data: { confirm: 'Are you sure?' }
+        %td(style="text-align:right")
+          - if current_user == pressure.user
+            = link_to 'Edit', edit_pressure_path(pressure)
+        
 
 %br
 

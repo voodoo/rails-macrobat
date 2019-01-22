@@ -10,6 +10,10 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    # kind of hacky way of showing a welcome screen where the default user page would be if logged in
+    if !current_user && !params[:id]
+      render action: 'welcome'
+    end
   end
 
   # GET /users/new
@@ -64,7 +68,11 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      if params[:id]
+        @user = User.find(params[:id])
+      else
+        @user = current_user
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

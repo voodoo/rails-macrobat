@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @keto.user
+%p
+  %b Reading:
+  = @keto.reading
+
+= link_to 'Edit', edit_keto_path(@keto)
+\|
+= link_to 'Back', ketos_path
