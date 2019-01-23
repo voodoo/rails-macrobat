@@ -20,6 +20,8 @@
         %td.edit
           - if current_user == glucose.user
             = link_to 'Edit', edit_glucose_path(glucose)
+          - else
+            = link_to glucose.user.name, user_path(glucose.user)            
             
 
 

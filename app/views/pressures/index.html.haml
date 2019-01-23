@@ -24,7 +24,7 @@
           - if current_user == pressure.user
             = link_to 'Edit', edit_pressure_path(pressure)
           - else
-            = link_to 'Show', pressure_path(pressure)
+            = link_to pressure.user.name, user_path(pressure.user)      
         
 
 %br

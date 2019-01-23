@@ -33,3 +33,5 @@
         %td.edit
           - if current_user == meal.user
             = link_to 'Edit', edit_meal_path(meal)
+          - else
+            = link_to meal.user.name, user_path(meal.user)

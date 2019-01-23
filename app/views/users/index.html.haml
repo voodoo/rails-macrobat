@@ -1,25 +1,16 @@
 %h3 
   Users
-  = link_to 'New User', new_user_path, class: 'btn btn-success float-right'
+  
 
 %table.table
   %thead
     %tr
       %th Name
-      %th
 
 
   %tbody
     - @users.each do |user|
       %tr
         %td= link_to user.name, user
-        /%td= user.email
-        /%td= link_to 'Show', user
-        %td
-          .btn-group
-            = link_to 'Edit', edit_user_path(user), class: 'btn btn-primary'
-            = link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
-
-%br
 
 
