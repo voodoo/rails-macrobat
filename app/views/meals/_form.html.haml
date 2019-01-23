@@ -1,8 +1,8 @@
-= bootstrap_form_with model: [current_user, @meal], local: true, layout: :horizontal do |f|
+= bootstrap_form_with model:  @meal, local: true, layout: :horizontal do |f|
   = render 'shared/error_messages', object: f.object
 
   /= f.select :user_id, User.all.map{|u| [u.name, u.id]}
-  = f.file_field :pic, label: "Meal Picture"
+  = f.file_field :pic, label: "Picture"
   = f.number_field :weight, help: 'In grams', required: true
   %h5 Macros
   = f.number_field :carbs, in: 1..100
@@ -10,6 +10,7 @@
   = f.number_field :prots,  in: 1..100, label: 'Proteins'
   = f.number_field :fiber, in: 1..100
   = f.number_field :calories
+  = f.datetime_select :date
   .actions.col-md-10.offset-md-2
     = f.submit 'Save', class: 'btn btn-success'
     - unless @meal.new_record?

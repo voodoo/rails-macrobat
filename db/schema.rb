@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2019_01_21_163914) do
   create_table "glucoses", force: :cascade do |t|
     t.bigint "user_id"
     t.integer "reading"
+    t.datetime "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_glucoses_on_user_id"
@@ -47,6 +48,7 @@ ActiveRecord::Schema.define(version: 2019_01_21_163914) do
   create_table "ketos", force: :cascade do |t|
     t.bigint "user_id"
     t.decimal "reading", precision: 10, scale: 2
+    t.datetime "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_ketos_on_user_id"
@@ -60,6 +62,7 @@ ActiveRecord::Schema.define(version: 2019_01_21_163914) do
     t.integer "calories"
     t.integer "fiber"
     t.integer "weight"
+    t.datetime "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_meals_on_user_id"
@@ -70,6 +73,7 @@ ActiveRecord::Schema.define(version: 2019_01_21_163914) do
     t.integer "sys"
     t.integer "dias"
     t.integer "pulse"
+    t.datetime "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_pressures_on_user_id"
@@ -79,6 +83,7 @@ ActiveRecord::Schema.define(version: 2019_01_21_163914) do
     t.string "name"
     t.string "email"
     t.string "password_digest"
+    t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["name"], name: "index_users_on_name", unique: true
   end

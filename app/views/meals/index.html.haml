@@ -12,23 +12,24 @@
       %th Fats
       %th Prots
       %th Fiber
-      /%th User
-      %th
+      %th.time 
+      %th.edit
 
   %tbody
     - @meals.each do |meal|
       %tr
-        /variant(resize_to_fit: [100, 100])
         %td
           - if meal.pic.attached?
-            = image_tag meal.pic, width: '100px'
-        /%td= image_tag meal.pic.variant(resize_to_fit: [100, 100]) rescue "Error"
+            = image_tag meal.pic, style: "width:100px;margin:-10px;"
         %td= meal.calories
+
         %td= meal.carbs
         %td= meal.fats
         %td= meal.prots
+
         %td= meal.fiber
-        /%td= link_to meal.user.name, meal.user
-        %td(style="text-align:right")
+
+        %td= time_ago_title(meal)
+        %td.edit
           - if current_user == meal.user
             = link_to 'Edit', edit_meal_path(meal)

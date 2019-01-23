@@ -6,23 +6,25 @@
 %table.table
   %thead
     %tr
-      %th User
       %th Sys
       %th Dias
       %th Pulse
-      %th
+      %th.time
+      %th.edit
 
 
   %tbody
     - @pressures.each do |pressure|
       %tr
-        %td= link_to pressure.user.name, pressure
         %td= pressure.sys
         %td= pressure.dias
         %td= pressure.pulse
-        %td(style="text-align:right")
+        %td= time_ago_title(pressure)
+        %td.edit
           - if current_user == pressure.user
             = link_to 'Edit', edit_pressure_path(pressure)
+          - else
+            = link_to 'Show', pressure_path(pressure)
         
 
 %br

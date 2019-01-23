@@ -5,7 +5,7 @@ class CreatePressures < ActiveRecord::Migration[5.2]
       t.integer :sys
       t.integer :dias
       t.integer :pulse
-
+      t.datetime :date
       t.timestamps
     end
   end

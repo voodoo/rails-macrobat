@@ -65,11 +65,11 @@ class PressuresController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_pressure
-      @pressure = Pressure.find(params[:id])
+      @pressure = current_user.pressures.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pressure_params
-      params.require(:pressure).permit(:user_id, :sys, :dias, :pulse)
+      params.require(:pressure).permit(:user_id, :sys, :dias, :pulse, :date)
     end
 end

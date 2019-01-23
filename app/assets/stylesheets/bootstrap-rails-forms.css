@@ -8,4 +8,10 @@
 .rails-bootstrap-forms-error-summary {
   margin-top: 10px;
 }
-
+.table th.time{
+  width: 140px;
+}
+.table th.edit, .table td.edit{
+  width: 80px;
+  text-align: right
+}

@@ -3,7 +3,8 @@
   = f.number_field :sys, label: 'Systolic', required: true
   = f.number_field :dias, label: 'Diastolic', required: true
   = f.number_field :pulse, required: true
- 
+  = f.datetime_select :date
   .actions.col-md-10.offset-md-2
     = f.submit 'Save', class: 'btn btn-success'
-    = link_to 'Destroy', @pressure, method: :delete, data: { confirm: 'Are you sure?' }
+    - unless @pressure.new_record?
+      = link_to 'Destroy', @pressure, method: :delete, data: { confirm: 'Are you sure?' }

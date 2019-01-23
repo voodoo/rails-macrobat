@@ -1,13 +1,8 @@
-= bootstrap_form_with model: [current_user,@glucose], local: true, layout: :horizontal do |f|
-  - if @glucose.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@glucose.errors.count, "error")} prohibited this glucose from being saved:"
-      %ul
-        - @glucose.errors.full_messages.each do |message|
-          %li= message
-
-  /= f.select :user_id, User.all.map{|u| [u.name, u.id]}
+= bootstrap_form_with model: @glucose, local: true, layout: :horizontal do |f|
+  = render 'shared/error_messages', object: f.object
   = f.number_field :reading, required: true
+  = f.datetime_select :date
   .actions.col-md-10.offset-md-2
     = f.submit 'Save', class: 'btn btn-success'
-    = link_to 'Destroy', @glucose, method: :delete, data: { confirm: 'Are you sure?' }
+    - unless @glucose.new_record?
+      = link_to 'Destroy', @glucose, method: :delete, data: { confirm: 'Are you sure?' }

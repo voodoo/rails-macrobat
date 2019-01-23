@@ -65,11 +65,11 @@ class KetosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_keto
-      @keto = Keto.find(params[:id])
+      @keto = current_user.ketos.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def keto_params
-      params.require(:keto).permit(:user_id, :reading)
+      params.require(:keto).permit(:user_id, :reading, :date)
     end
 end

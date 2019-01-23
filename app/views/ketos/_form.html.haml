@@ -1,6 +1,7 @@
-= bootstrap_form_with model: [current_user, @keto], local: true, layout: :horizontal do |f|
+= bootstrap_form_with model: @keto, local: true, layout: :horizontal do |f|
   = render 'shared/error_messages', object: f.object
   = f.number_field :reading, step: 0.1, required: true
+  = f.datetime_select :date
   .actions.col-md-10.offset-md-2
     = f.submit 'Save', class: 'btn btn-success'
     - unless @keto.new_record?

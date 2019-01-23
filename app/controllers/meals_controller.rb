@@ -14,7 +14,7 @@ class MealsController < ApplicationController
 
   # GET /meals/new
   def new
-    @meal = Meal.new(fats: 60, carbs: 20, prots: 30, fiber: 50, calories: 1000, weight: 500)
+    @meal = Meal.new(fats: 60, carbs: 20, prots: 30, fiber: 50, calories: 1000, weight: 500, date: Time.now)
   end
 
   # GET /meals/1/edit
@@ -42,7 +42,7 @@ class MealsController < ApplicationController
   def update
     respond_to do |format|
       if @meal.update(meal_params)
-        format.html { redirect_to @meal, notice: 'Meal was successfully updated.' }
+        format.html { redirect_to @meal.user, notice: 'Meal was successfully updated.' }
         format.json { render :show, status: :ok, location: @meal }
       else
         format.html { render :edit }
@@ -70,6 +70,6 @@ class MealsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def meal_params
-      params.require(:meal).permit(:user_id, :pic, :carbs, :fats, :prots, :calories, :fiber, :weight)
+      params.require(:meal).permit(:user_id, :pic, :carbs, :fats, :prots, :calories, :fiber, :weight, :date)
     end
 end

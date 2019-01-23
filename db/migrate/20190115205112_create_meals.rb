@@ -8,7 +8,7 @@ class CreateMeals < ActiveRecord::Migration[5.2]
       t.integer :calories
       t.integer :fiber
       t.integer :weight
-
+      t.datetime :date
       t.timestamps
     end
   end

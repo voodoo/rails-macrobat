@@ -1,6 +1,6 @@
 
 %h3 
-  Glucose readings
+  Glucose
   - if current_user
     = link_to 'New Glucose', new_glucose_path, class: 'btn btn-success float-right sized-button'
 
@@ -8,19 +8,16 @@
   %thead
     %tr
       %th Reading
-      %th Date/Time
-      %th
+      %th.time 
+      %th.edit
 
   %tbody
     - @glucoses.each do |glucose|
       %tr
         /%td= link_to glucose.user.name, glucose.user
         %td= glucose.reading
-        %td{title:glucose.updated_at.to_s(:long)}
-          = time_ago_in_words glucose.updated_at
-          ago
-        /%td= link_to 'Show', glucose
-        %td(style="text-align:right")
+        %td= time_ago_title(glucose)
+        %td.edit
           - if current_user == glucose.user
             = link_to 'Edit', edit_glucose_path(glucose)
             

@@ -1,8 +1,7 @@
-%p#notice= notice
-
 
 .card
-  %img.card-img-top{:alt => "...", :src => url_for(@meal.pic)}/
+  - if @meal.pic.attached?
+    %img.card-img-top{:alt => "...", :src => url_for(@meal.pic)}/
   /https://getbootstrap.com/docs/4.2/components/card/
   -# .card-body
   -#   %h5.card-title Card title
