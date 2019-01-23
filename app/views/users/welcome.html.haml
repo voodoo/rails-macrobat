@@ -1,3 +1,18 @@
-User not logged in
 
-%i.icon.ion-md-heart
+%h1 Macrobat
+= image_tag 'macrobat.svg', class: 'float-right', style: 'width: 60%'
+
+%h3 Track your ...
+
+
+%ul
+  %li Calories
+  %li Macros
+  %li Glucose
+  %li Ketones
+  %li Pressure 
+  %li Pulse
+.btn-group
+  = link_to 'Login', login_path, class: 'btn btn-primary btn-lg'
+  = link_to 'Signup', signup_path, class: 'btn btn-success btn-lg'
+
