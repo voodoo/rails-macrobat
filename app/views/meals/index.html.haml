@@ -20,7 +20,10 @@
       %tr
         %td
           - if meal.pic.attached?
-            = image_tag meal.pic, style: "width:100px;margin:-10px;"
+            /= image_tag meal.pic, style: "width:100px;margin:-10px;"
+            //= image_tag meal.pic.variant(resize: "100x100") #, monochrome: true)
+            /= image_tag meal.pic.variant(resize_to: [100, 100]).processed.service_url
+            = image_tag meal.thumbnail
         %td= meal.calories
 
         %td= meal.carbs
@@ -32,6 +35,6 @@
         %td= time_ago_title(meal)
         %td.edit
           - if current_user == meal.user
-            = link_to 'Edit', edit_meal_path(meal)
+            = link_to 'show', meal_path(meal)
           - else
             = link_to meal.user.name, user_path(meal.user)
